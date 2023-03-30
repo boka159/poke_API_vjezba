@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 Handlebars.registerHelper("matematika", function(indexNr, operator, brojN){
     let tmpPrviBr = parseInt(indexNr);
     let tmpDrugiBr = parseInt(brojN);
@@ -25,6 +27,7 @@ function popuniPokemone(){
     const html = template(ctxData);
 
     document.getElementById("div-pokemoni").innerHTML = html;
+    $('[data-bs-toggle=popover]').popover({html:true});
 }
 
 //funkcija koja će se pozvati na loadanju stranice
@@ -34,3 +37,4 @@ request.onload = function(){
 
 //pošalji request na (pokemon) API
 request.send();
+});
