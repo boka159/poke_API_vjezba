@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon API</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <script id="lista-pokemona" type="text/x-handlebars">
+        <table class="table-pokemon">
+                <tr>
+                    <th>Redni broj</th>
+                    <th>Ime pokemona</th>
+                </tr>
+                {{#each pokemon}}
+                <tr>
+                    <td>{{@index}}</td>
+                    <td>{{this.name}}</td>
+                </tr>
+                {{/each}}
+        </table>
+    </script>
+
+    <div id="div-pokemoni"></div>
+    <script src="JS/pokemon-data.js"></script>
+</body>
+</html>
