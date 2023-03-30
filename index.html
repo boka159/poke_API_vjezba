@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon API</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <script id="lista-pokemona" type="text/x-handlebars">
+        <table class="table">
+                <tr>
+                    <th class="col-sm-12 d-none d-sm-block">Redni broj</th>
+                    <th class="col-sm-12">Ime pokemona</th>
+                </tr>
+                {{#each pokemon}}
+                <tr>
+                    <td class="col-sm-12 d-none d-sm-block">{{matematika @index "+" 1}}</td>
+                    <td class="col-sm-12"><a href="#" data-bs-toggle="popover" data-bs-title="popover title" data-content="nekakav content kao test">{{this.name}}</a></td>
+                </tr>
+                {{/each}}
+        </table>
+    </script>
+
+    <div id="div-pokemoni"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/pokemon-data.js"></script>
+</body>
+</html>
