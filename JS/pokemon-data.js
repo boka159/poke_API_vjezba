@@ -1,3 +1,16 @@
+Handlebars.registerHelper("matematika", function(indexNr, operator, brojN){
+    let tmpPrviBr = parseInt(indexNr);
+    let tmpDrugiBr = parseInt(brojN);
+
+    return {
+        "+": tmpPrviBr + tmpDrugiBr,
+        "-": tmpPrviBr - tmpDrugiBr,
+        "*": tmpPrviBr * tmpDrugiBr,
+        "/": tmpPrviBr / tmpDrugiBr,
+        "%": tmpPrviBr % tmpDrugiBr,
+    }[operator];
+})
+
 let request = new XMLHttpRequest();
 
 //priprema poziva na (pokemon) API
