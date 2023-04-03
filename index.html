@@ -18,7 +18,7 @@
                 {{#each pokemon}}
                 <tr>
                     <td class="col-sm-12 d-none d-sm-block">{{matematika @index "+" 1}}</td>
-                    <td class="col-sm-12"><a href="#" data-bs-toggle="popover" data-bs-title="popover title" data-content="nekakav content kao test">{{this.name}}</a></td>
+                    <td class="col-sm-12"><a href="#" data-bs-title="{{this.name}}" data-bs-toggle="popover" data-bs-content="{{this.url}}">{{this.name}}</a></td>
                 </tr>
                 {{/each}}
         </table>
