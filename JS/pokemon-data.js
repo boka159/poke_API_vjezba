@@ -55,10 +55,21 @@ function nakon2Sekunde(){
     }, 2000);
 }
 
+function registirajMouseEvent(){
+    $("table tr").on("mouseenter", event => {
+        $(event.currentTarget).css("background-color", "magenta"); 
+    });
+
+    $("table tr").on("mouseleave", event => {
+        $(event.currentTarget).removeAttr("style"); 
+    });
+}
+
 //funkcija koja se izvršava nakon loadanja i određuje redoslijed ostalih funckija (ako imamo više)
 function odradiOstalo(){
     dodajPruge();
     dodajHeaderBoju();
+    registirajMouseEvent();
     nakon2Sekunde();
 }
 
@@ -69,5 +80,10 @@ request.onload = function(){
 }
 
 //pošalji request na (pokemon) API
-request.send();
+    request.send();
+
+    $(window).resize(() => {
+        console.log("Width: " + window.innerWidth);
+        console.log("Height: " + $(window).height());
+    });
 });
