@@ -13,17 +13,17 @@ Handlebars.registerHelper("matematika", function(indexNr, operator, brojN){
     }[operator];
 })
 
-let request = new XMLHttpRequest();
+// let request = new XMLHttpRequest();
 
 //priprema poziva na (pokemon) API
-request.open("GET", "https://pokeapi.co/api/v2/pokemon-color/yellow", true);
+// request.open("GET", "https://pokeapi.co/api/v2/pokemon-color/yellow", true);
 
-function popuniPokemone(){
-    const resp = JSON.parse(request.response);
+function popuniPokemone(data){
+    // const resp = JSON.parse(request.response);
     const sourceHTML = document.getElementById("lista-pokemona").innerHTML;
     const template = Handlebars.compile(sourceHTML);
 
-    const ctxData = {pokemon: resp.pokemon_species.slice(0,20), tableClass: 'table'};
+    const ctxData = {pokemon: data.pokemon_species.slice(0,20), tableClass: 'table'};
     const html = template(ctxData);
 
     document.getElementById("div-pokemoni").innerHTML = html;
@@ -74,16 +74,31 @@ function odradiOstalo(){
 }
 
 //funkcija koja će se pozvati na loadanju stranice
-request.onload = function(){
-    popuniPokemone();
-    odradiOstalo();
-}
+// request.onload = function(){
+//     popuniPokemone();
+//     odradiOstalo();
+// }
 
 //pošalji request na (pokemon) API
-    request.send();
+    // request.send();
 
     $(window).resize(() => {
         console.log("Width: " + window.innerWidth);
         console.log("Height: " + $(window).height());
     });
+
+    $.ajax({
+        url: "https://pokeapi.co/api/v2/pokemon-color/yellow",
+        timeout: 20
+      }).done(function(data) {
+        popuniPokemone(data);
+        odradiOstalo();
+      })
+      .fail(function() {
+        console.log( "error" );
+        $('<div id="skriveni"></div>')
+            .insertAfter($('#div-pokemoni'))
+            .text("Nije učitano, pokušajte kasnije!");
+      });
+
 });
